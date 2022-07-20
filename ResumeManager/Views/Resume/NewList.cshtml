@@ -1,0 +1,148 @@
+﻿@model IList<ResumeManager.Models.Applicant>
+
+<div class="container d-flex flex-wrap">
+    @foreach (var item in Model)
+    {
+        <div id="card-number-@item.Id">
+
+            <partial name="_applicantCard" model="item" />
+
+        </div>
+    }
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="Id" class="control-label">Id</label>
+                    <input id="modal-input-id" for="Id" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label for="Name" class="control-label">Name</label>
+                    <input id="modal-input-name" for="Name" class="form-control" />
+                </div>
+
+                <div class="form-group" id="div_gender">
+                    <label for="Gender" class="control-label">Gender</label>
+                    <br />
+                    @{
+                        var counter = 0;
+                    }
+
+                    @foreach (var gender in ViewBag.Genders)
+                    {
+                        <input type="radio" class="btn-check" asp-for="@gender" id="modal-input-gender-@gender" value="@ViewBag.Genders[counter]" group="btnradio" />
+                        <label class="btn btn-outline-primary" asp-for="@gender" for="modal-input-gender-@gender">@ViewBag.Genders[counter]</label>
+                        counter++;
+                    }
+                    <br />
+                </div>
+
+                <fieldset class="form-group"  id="modal-input-genderlist">
+
+
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="Name" class="control-label">Qualification</label>
+                    <select id="modal-input-qualification" for="Qualification" class="form-control" asp-items="ViewBag.Qualifications">
+                        <option value="">Please choose Qualification</option>
+                        @*                    <option value = "OK">OK</option>
+                            <option value = "NG">NG</option>*@
+                    </select>
+                </div>
+
+                @*                <div class="form-group ">
+                    <label for="Name" class="control-label">Gender</label>
+                    <br />
+
+                    @foreach (var gender in Model.Genders)
+                    {
+                    <input type="radio" class="btn-check" id="btnradio-@gender.Id" asp-for="Gender" value="@gender.Text" group="btnradio">
+                    <label class="btn btn-outline-primary" asp-for="Gender" for="btnradio-@gender.Id">@gender.Text</label>
+                    }
+                    <br />
+                    </div>*@
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="save-button" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*
+    <p>
+    <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Gender)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Age)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Qualification)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.TotalExperience)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.PhotoUrl)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Language)
+    </th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Gender)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Age)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Qualification)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.TotalExperience)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.PhotoUrl)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Language)
+    </td>
+    <td>
+    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+*@

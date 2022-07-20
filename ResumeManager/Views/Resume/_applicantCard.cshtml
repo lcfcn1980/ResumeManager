@@ -1,0 +1,14 @@
+﻿@model ResumeManager.Models.Applicant
+
+<div class="card border-primary mb-3" style="max-width: 80rem;">
+    <div class="card-header">@Html.DisplayFor(m => Model.Name)</div>
+    <div class="card-body">
+        <h4 class="card-title">Primary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        @*<a asp-action="Create" class="btn btn-warning">Edit</a>*@
+@*        <a href="/Resume/NewList/@Model.Id" class="btn btn-warning">Edit</a>*@
+        <button value="@Model.Id" type="button" class="btn btn-primary edit-product-button" data-bs-toggle="modal" data-bs-target="#editModal">
+            modal Edit
+        </button>
+    </div>
+</div>
